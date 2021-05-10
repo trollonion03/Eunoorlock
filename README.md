@@ -6,7 +6,8 @@
 그냥 간단한 도어락 프로젝트
 
 2021.05.31 내에 종료 예정
+
 Used Hardware
 --------------
 
-Arduino 33 IoT, Drv 8835 motor driver
+Arduino 33 IoT, DRV 8835 motor driver
