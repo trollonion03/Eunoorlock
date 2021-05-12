@@ -44,8 +44,9 @@ void loop() {
   String req = client.readStringUntil('\r'); 
   Serial.println(req); 
   client.flush(); 
-  
-  if (req.indexOf("/gpio1/highground") !=-1) {
+  int key = 0;
+  if (req.indexOf("/gpio1/highground") !=-1 && key == 1) {
+    key = 1;
     if (req.indexOf("/gpio2/lock")) {
       digitalWrite(3, HIGH);
       analogWrite(4, 175);
@@ -58,9 +59,13 @@ void loop() {
       delay(500);
       analogWrite(4, 0);
       }
+    else if (req.indexOf("/gpio2/disconnect")) {
+      key = 0;
+      client.stop();
+      }
     }
   else {
     client.print("n");
-    client.stop(); 
+    //client.stop(); //보류
   }
 }
