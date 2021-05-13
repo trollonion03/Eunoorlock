@@ -135,11 +135,13 @@ void loop() {
           digitalWrite(3, HIGH);               // GET /H turns the motor on
           analogWrite(4, 175);                 // Test needed
           delay(300);                          // Test needed
+          break;
         }
         if (currentLine.endsWith("GET /L")) {
           digitalWrite(3, LOW);                // GET /L turns the reverse mode
           analogWrite(4, 175);                 // Test needed
           delay(300);                          // Test needed
+          break;
         }
       }
     }
