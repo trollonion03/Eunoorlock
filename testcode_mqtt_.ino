@@ -52,12 +52,14 @@ void loop() {
       analogWrite(4, 175);
       delay(1500);
       analogWrite(4, 0);
+      break;
       }
     else if (req.indexOf("/gpio2/unlock")) {
       digitalWrite(3, LOW);
       analogWrite(4, 175);
       delay(1500);
       analogWrite(4, 0);
+      break;
       }
     else if (req.indexOf("/gpio2/disconnect")) {
       key = 0;
