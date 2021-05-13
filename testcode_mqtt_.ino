@@ -7,9 +7,9 @@ int status = WL_IDLE_STATUS;
 WiFiServer server(80);
 void setup() {
   Serial.begin(9600);
-  pinMode(3, OUTPUT);
+  pinMode(3, OUTPUT); //drv8835 needed
   pinMode(4, OUTPUT);
-  digitalWrite(3, LOW);
+  digitalWrite(3, LOW); //initialize motor driver 
   analogWrite(4, 0);
   while (status != WL_CONNECTED) { 
     Serial.print("Attempting to connect to SSID: "); 
@@ -50,13 +50,13 @@ void loop() {
     if (req.indexOf("/gpio2/lock")) {
       digitalWrite(3, HIGH);
       analogWrite(4, 175);
-      delay(500);
+      delay(1500);
       analogWrite(4, 0);
       }
     else if (req.indexOf("/gpio2/unlock")) {
       digitalWrite(3, LOW);
       analogWrite(4, 175);
-      delay(500);
+      delay(1500);
       analogWrite(4, 0);
       }
     else if (req.indexOf("/gpio2/disconnect")) {
