@@ -28,16 +28,15 @@ WiFiServer server(80);
 void setup() {
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
-
+  Serial.available();
   Serial.println("Hello there!");
 
   Serial.println("Access Point Web Server");
 
-  pinMode(3, OUTPUT); //motor Mode, plese check before run
-  pinMode(4, OUTPUT); //PWM, plese check before run
+  pinMode(2, OUTPUT); //motor Mode, plese check before run
+  pinMode(3, OUTPUT); //PWM, plese check before run
+  digitalWrite(3, LOW); 
+  analogWrite(4, 0); //initalize the device
 
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
@@ -114,8 +113,9 @@ void loop() {
             client.println();
 
             // the content of the HTTP response follows the header:
-            client.print("Click <a href=\"/H\">here</a> lock the device<br>");
-            client.print("Click <a href=\"/L\">here</a> unlock the device<br>");
+            //client.print("Click <a href=\"/H\">here</a> lock the device<br>");
+            //client.print("Click <a href=\"/L\">here</a> unlock the device<br>");
+            //client.print("Click <a href=\"/S\">here</a> stop the device<br>");
 
             // The HTTP response ends with another blank line:
             client.println();
@@ -132,16 +132,21 @@ void loop() {
 
         // Check to see if the client request was "GET /H" or "GET /L":
         if (currentLine.endsWith("GET /H")) {
-          digitalWrite(3, HIGH);               // GET /H turns the motor on
-          analogWrite(4, 175);                 // Test needed
-          delay(300);                          // Test needed
-          break;
+          digitalWrite(2, HIGH);               // GET /H turns the motor on
+          analogWrite(3, 0);                 // Test needed
+          delay(500);                          // Test needed
+          digitalWrite(2, 0);
+          analogWrite(3, 0);
         }
         if (currentLine.endsWith("GET /L")) {
-          digitalWrite(3, LOW);                // GET /L turns the reverse mode
-          analogWrite(4, 175);                 // Test needed
-          delay(300);                          // Test needed
-          break;
+          digitalWrite(2, LOW);                // GET /L turns the reverse mode
+          analogWrite(3, 225);                 // Test needed
+          delay(1000);                          // Test needed
+          analogWrite(3, 0);
+        }
+        if (currentLine.endsWith("GET /S")) {
+          digitalWrite(2, 0);
+          analogWrite(3, 0);
         }
       }
     }
