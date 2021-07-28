@@ -3,11 +3,15 @@
 ![Android](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=Arduino&logoColor=white)
 
-그냥 간단한 도어락 프로젝트
+2021 3-9 학급 스마트 도어락 프로젝트
 
-2021.06.31 내에 종료 예정
 
 Used Hardware
 --------------
 
 Arduino 33 IoT, DRV 8835 motor driver
+
+Functions
+---------
+
+Simple lock/unlock via http, long-range lock/unlock via firebase(work on progress), anti-theif alert(work on progress)
