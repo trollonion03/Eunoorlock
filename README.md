@@ -11,7 +11,7 @@
 Used Hardware
 --------------
 
-Arduino 33 IoT, DRV 8835 motor driver
+Arduino 33 IoT, DRV 8835 motor driver, based on broken Yeelock device
 
 Functions
 ---------
