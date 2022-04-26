@@ -20,6 +20,10 @@ based on broken doorlock device
 Functions
 ---------
 
-Simple lock/unlock via http, long-range lock/unlock via firebase(work on progress), anti-theif alert(work on progress)
+Simple lock/unlock via http
+
+long-range lock/unlock via firebase(work on progress)
+
+anti-theif alert(work on progress)
 
 low-energy mode(work on progress)
